@@ -19,9 +19,10 @@ def handler(value, **kwargs):
 
     """
     value = read_value_from_path(value)
-
-    table_info, table_keys = None
-    region, table_name = None
+    table_info = None
+    table_keys = None
+    region= None
+    table_name = None
     if "@" in value:
         table_info, table_keys = value.split("@", 1)
         if ":" in table_info:
@@ -34,13 +35,21 @@ def handler(value, **kwargs):
     if table_name is None:
         raise ValueError('Please make sure to include a dynamodb table name')
 
+    table_keys=table_keys.split(".")
+    print table_keys
     dynamodb = get_session(region).client('dynamodb')
     response = dynamodb.get_item(
         TableName=table_name,
         Key={
-            table_keys[0]: table_keys[1]
+            table_keys[0]: {"S": table_keys[1]}
         }
     )
-    table_keys = table_keys[:2]
-    print response
+    print "tuple"
+    table_keys = table_keys[2:]
     print table_keys
+
+    print response['Item']['Flow'].values()[0]
+
+
+    print response[for k in table_keys.items()]
+    #print table_keys
