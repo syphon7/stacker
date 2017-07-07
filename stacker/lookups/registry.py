@@ -5,6 +5,7 @@ from .handlers import output
 from .handlers import kms
 from .handlers import xref
 from .handlers import ssmstore
+from .handlers import dynamodb
 from .handlers import envvar
 from .handlers import rxref
 from .handlers import file as file_handler
@@ -80,3 +81,4 @@ register_lookup_handler(file_handler.TYPE_NAME, file_handler.handler)
 register_lookup_handler(split.TYPE_NAME, split.handler)
 register_lookup_handler(default.TYPE_NAME, default.handler)
 register_lookup_handler(hook_data.TYPE_NAME, hook_data.handler)
+register_lookup_handler(dynamodb.TYPE_NAME, dynamodb.handler)
