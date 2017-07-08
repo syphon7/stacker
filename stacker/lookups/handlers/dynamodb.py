@@ -17,22 +17,6 @@ def handler(value, **kwargs):
     Note: The region is optional, and defaults to the environment's
     `AWS_DEFAULT_REGION` if not specified.
 
-    For example:
-
-        # In stacker we would reference a dynamo key like this:
-        conf_key: ${dynamodb us-east-1:TestTable@TestKey:TestVal.TestString}
-
-        # Since Dynamo has different datatypes, you need to define what you are
-        # looking up. If you do not, stacker assumes its a string. You can do
-        # this by putting the data type in brackets after the lookup key
-
-        conf_num: ${dynamodb us-east-1:TestTable@TestKey:TestVal.TestNumber[N]}
-
-        # You can lookup values in maps as well. Note that this example assumes
-        # TestVal is a string
-
-        conf_val: ${dynamodb us-east-1:TestTable@
-                                            TestKey:TestVal.TestMap[M].TestVal}
 
 
     """

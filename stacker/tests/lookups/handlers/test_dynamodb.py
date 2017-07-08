@@ -57,7 +57,7 @@ class TestDynamoDBHandler(unittest.TestCase):
             },
             'ProjectionExpression': "TestVal,TestMap,Number1"
         }
-        self.base_lookup_key = "us-east-1:TestTable@TestKey:TestVal." \
+        self.base_lookup_key = "TestTable@TestKey:TestVal." \
                                "TestMap[M].Number1[N]"
         self.base_lookup_key_valid = 12345
         self.stubber.add_response('get_item',
