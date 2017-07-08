@@ -106,7 +106,11 @@ def _getValFromDict(data, keylist):
                 data = temp_dict[k[k1]]
             nextType = k1
     if nextType == "L":
-        return list(data[nextType])
+        ret_list = []
+        for v in data[nextType]:
+            for v1 in v:
+                ret_list.append(v[v1])
+        return ret_list
     if nextType == "N":
         return int(data[nextType])
     return str(data[nextType])
